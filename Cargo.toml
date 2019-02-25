@@ -1,0 +1,15 @@
+[package]
+authors = ["Michael Aaron Murphy <mmstickman@gmail.com>"]
+categories = ["os", "os::unix-apis"]
+description = "Convert Ubuntu versions to codenames, and vice versa"
+edition = "2018"
+homepage = "https://github.com/pop-os/ubuntu-version"
+keywords = ["linux", "ubuntu", "version", "codename"]
+license = "MIT"
+name = "ubuntu-version"
+readme = "README.md"
+version = "0.1.0"
+
+[dependencies]
+os-release = "0.1.0"
+err-derive = "0.1.5"
