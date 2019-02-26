@@ -50,7 +50,7 @@ impl Version {
 
 impl Display for Version {
     fn fmt(&self, fmt: &mut Formatter) -> fmt::Result {
-        write!(fmt, "{}.{}", self.major, self.minor)?;
+        write!(fmt, "{}.{:02}", self.major, self.minor)?;
 
         if self.patch != 0 {
             write!(fmt, "{}", self.patch)?;
