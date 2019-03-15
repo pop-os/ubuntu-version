@@ -40,6 +40,11 @@ impl Version {
         release.version.parse::<Version>().map_err(VersionError::Parse)
     }
 
+    /// Returns `true` if this is a LTS release.
+    pub fn is_lts(self) -> bool {
+        self.major % 2 == 0 && self.minor == 4
+    }
+
     /// Increments the major / minor version to the next expected release version.
     pub fn next_release(self) -> Self {
         let (major, minor) = if self.minor == 10 { (self.major + 1, 4) } else { (self.major, 10) };
@@ -86,6 +91,15 @@ impl FromStr for Version {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    pub fn lts_check() {
+        assert!(Version { major: 18, minor: 4, patch: 0 }.is_lts());
+        assert!(!Version { major: 18, minor: 10, patch: 0 }.is_lts());
+        assert!(!Version { major: 19, minor: 4, patch: 0 }.is_lts());
+        assert!(!Version { major: 19, minor: 10, patch: 0 }.is_lts());
+        assert!(Version { major: 20, minor: 4, patch: 0 }.is_lts());
+    }
 
     #[test]
     pub fn lts_parse() {
