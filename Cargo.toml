@@ -8,7 +8,7 @@ keywords = ["linux", "ubuntu", "version", "codename"]
 license = "MIT"
 name = "ubuntu-version"
 readme = "README.md"
-version = "0.1.2"
+version = "0.1.3"
 
 [dependencies]
 os-release = "0.1.0"

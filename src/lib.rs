@@ -12,6 +12,7 @@ impl From<Version> for Codename {
             (18, 4) => Codename::Bionic,
             (18, 10) => Codename::Cosmic,
             (19, 4) => Codename::Disco,
+            (19, 10) => Codename::Eoan,
             _ => panic!("unsupported ubuntu version"),
         }
     }
@@ -23,6 +24,7 @@ impl From<Codename> for Version {
             Codename::Bionic => (18, 4),
             Codename::Cosmic => (18, 10),
             Codename::Disco => (19, 4),
+            Codename::Eoan => (19, 10),
         };
 
         Version { major, minor, patch: 0 }

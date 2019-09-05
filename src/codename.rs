@@ -15,6 +15,7 @@ pub enum Codename {
     Bionic,
     Cosmic,
     Disco,
+    Eoan,
 }
 
 impl Display for Codename {
@@ -29,6 +30,7 @@ impl FromStr for Codename {
             "bionic" => Codename::Bionic,
             "cosmic" => Codename::Cosmic,
             "disco" => Codename::Disco,
+            "eoan" => Codename::Eoan,
             _ => return Err(CodenameParseError::NotFound),
         };
 
@@ -42,6 +44,7 @@ impl From<Codename> for &'static str {
             Codename::Bionic => "bionic",
             Codename::Cosmic => "cosmic",
             Codename::Disco => "disco",
+            Codename::Eoan => "eoan",
         }
     }
 }
