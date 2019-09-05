@@ -1,5 +1,7 @@
-use std::fmt::{self, Display, Formatter};
-use std::str::FromStr;
+use std::{
+    fmt::{self, Display, Formatter},
+    str::FromStr,
+};
 
 #[derive(Debug, Error)]
 pub enum CodenameParseError {
@@ -16,9 +18,7 @@ pub enum Codename {
 }
 
 impl Display for Codename {
-    fn fmt(&self, fmt: &mut Formatter) -> fmt::Result {
-        fmt.write_str(<&'static str>::from(*self))
-    }
+    fn fmt(&self, fmt: &mut Formatter) -> fmt::Result { fmt.write_str(<&'static str>::from(*self)) }
 }
 
 impl FromStr for Codename {

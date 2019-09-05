@@ -1,7 +1,9 @@
 use os_release::OsRelease;
-use std::fmt::{self, Display, Formatter};
-use std::io;
-use std::str::FromStr;
+use std::{
+    fmt::{self, Display, Formatter},
+    io,
+    str::FromStr,
+};
 
 #[derive(Debug, Error)]
 pub enum VersionError {
@@ -41,9 +43,7 @@ impl Version {
     }
 
     /// Returns `true` if this is a LTS release.
-    pub fn is_lts(self) -> bool {
-        self.major % 2 == 0 && self.minor == 4
-    }
+    pub fn is_lts(self) -> bool { self.major % 2 == 0 && self.minor == 4 }
 
     /// Increments the major / minor version to the next expected release version.
     pub fn next_release(self) -> Self {

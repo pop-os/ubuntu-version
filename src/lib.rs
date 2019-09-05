@@ -4,8 +4,7 @@ extern crate err_derive;
 mod codename;
 mod version;
 
-pub use self::codename::*;
-pub use self::version::*;
+pub use self::{codename::*, version::*};
 
 impl From<Version> for Codename {
     fn from(version: Version) -> Codename {
