@@ -1,3 +1,4 @@
+use chrono::{Datelike, Utc};
 use os_release::OsRelease;
 use std::{
     fmt::{self, Display, Formatter},
@@ -45,6 +46,16 @@ impl Version {
     /// Returns `true` if this is a LTS release.
     pub fn is_lts(self) -> bool { self.major % 2 == 0 && self.minor == 4 }
 
+    /// The number of months that have passed since this version was released.
+    pub fn months_since(self) -> i32 {
+        let today = Utc::today();
+
+        let major = 2000 - today.year() as u32;
+        let minor = today.month() as u32;
+
+        months_since(self, major, minor)
+    }
+
     /// Increments the major / minor version to the next expected release version.
     pub fn next_release(self) -> Self {
         let (major, minor) = if self.minor == 10 { (self.major + 1, 4) } else { (self.major, 10) };
@@ -88,9 +99,20 @@ impl FromStr for Version {
     }
 }
 
+fn months_since(version: Version, major: u32, minor: u32) -> i32 {
+    ((major as i32 - version.major as i32) * 12) + minor as i32 - version.minor as i32
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn months_since_release() {
+        assert_eq!(18, months_since(Version { major: 18, minor: 4, patch: 0 }, 19, 10));
+        assert_eq!(3, months_since(Version { major: 19, minor: 10, patch: 0 }, 20, 1));
+        assert_eq!(-3, months_since(Version { major: 18, minor: 4, patch: 0 }, 18, 1))
+    }
 
     #[test]
     pub fn lts_check() {
