@@ -8,23 +8,23 @@ use std::{
 
 #[derive(Debug, Error)]
 pub enum VersionError {
-    #[error(display = "failed to fetch /etc/os-release: {}", _0)]
+    #[error("failed to fetch /etc/os-release: {}", _0)]
     OsRelease(io::Error),
-    #[error(display = "version parsing error: {}", _0)]
+    #[error("version parsing error: {}", _0)]
     Parse(VersionParseError),
 }
 
 #[derive(Debug, Error)]
 pub enum VersionParseError {
-    #[error(display = "release version component was not a number: found {}", _0)]
+    #[error("release version component was not a number: found {}", _0)]
     VersionNaN(String),
-    #[error(display = "invalid minor release version: expected 4 or 10, found {}", _0)]
+    #[error("invalid minor release version: expected 4 or 10, found {}", _0)]
     InvalidMinorVersion(u8),
-    #[error(display = "major version does not exist")]
+    #[error("major version does not exist")]
     NoMajor,
-    #[error(display = "minor version does not exist")]
+    #[error("minor version does not exist")]
     NoMinor,
-    #[error(display = "release version is empty")]
+    #[error("release version is empty")]
     NoVersion,
 }
 

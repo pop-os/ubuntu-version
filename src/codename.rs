@@ -5,7 +5,7 @@ use std::{
 
 #[derive(Debug, Error)]
 pub enum CodenameParseError {
-    #[error(display = "unknown codename string")]
+    #[error("unknown codename string")]
     NotFound,
 }
 
@@ -16,6 +16,21 @@ pub enum Codename {
     Cosmic,
     Disco,
     Eoan,
+    Focal,
+}
+
+impl Codename {
+    /// When this was released, as the time in seconds since the Unix Epoch
+    pub fn release_timestamp(self) -> u64 {
+        match self {
+            Codename::Bionic => 1524700800,
+            Codename::Cosmic => 1539820800,
+            Codename::Disco => 1555545600,
+            Codename::Eoan => 1571270400,
+            // Approximate time for future release
+            Codename::Focal => 1585699200,
+        }
+    }
 }
 
 impl Display for Codename {
@@ -31,6 +46,7 @@ impl FromStr for Codename {
             "cosmic" => Codename::Cosmic,
             "disco" => Codename::Disco,
             "eoan" => Codename::Eoan,
+            "focal" => Codename::Focal,
             _ => return Err(CodenameParseError::NotFound),
         };
 
@@ -45,6 +61,7 @@ impl From<Codename> for &'static str {
             Codename::Cosmic => "cosmic",
             Codename::Disco => "disco",
             Codename::Eoan => "eoan",
+            Codename::Focal => "focal",
         }
     }
 }
