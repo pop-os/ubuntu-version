@@ -147,7 +147,7 @@ mod tests {
     #[test]
     pub fn non_lts_next() {
         assert_eq!(
-            Version { major: 19, minor: 04, patch: 0 },
+            Version { major: 19, minor: 4, patch: 0 },
             Version { major: 18, minor: 10, patch: 0 }.next_release()
         )
     }
