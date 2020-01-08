@@ -20,15 +20,27 @@ pub enum Codename {
 }
 
 impl Codename {
+    /// Returns the release date in a `(year, month, date)` format
+    pub fn release_date(self) -> (u32, u32, u32) {
+        match self {
+            Codename::Bionic => (2018, 4, 26),
+            Codename::Cosmic => (2018, 10, 18),
+            Codename::Disco => (2019, 4, 18),
+            Codename::Eoan => (2019, 10, 17),
+            // Approximate time for future release
+            Codename::Focal => (2020, 4, 0),
+        }
+    }
+
     /// When this was released, as the time in seconds since the Unix Epoch
     pub fn release_timestamp(self) -> u64 {
         match self {
-            Codename::Bionic => 1524700800,
-            Codename::Cosmic => 1539820800,
-            Codename::Disco => 1555545600,
-            Codename::Eoan => 1571270400,
+            Codename::Bionic => 1_524_700_800,
+            Codename::Cosmic => 1_539_820_800,
+            Codename::Disco => 1_555_545_600,
+            Codename::Eoan => 1_571_270_400,
             // Approximate time for future release
-            Codename::Focal => 1585699200,
+            Codename::Focal => 1_585_699_200,
         }
     }
 }
