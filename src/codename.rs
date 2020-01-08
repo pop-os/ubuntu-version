@@ -20,6 +20,17 @@ pub enum Codename {
 }
 
 impl Codename {
+    /// The date when this release is to be, or was, EOL'd.
+    pub fn eol_date(self) -> (u32, u32, u32) {
+        let (y, m, d) = self.release_date();
+        
+        if y % 2 == 0 && m == 4 {
+            (y + 10, m, d)
+        } else {
+            (y + 1, if m == 4 { 1 } else { 7 }, d)
+        }
+    }
+
     /// Returns the release date in a `(year, month, date)` format
     pub fn release_date(self) -> (u32, u32, u32) {
         match self {
