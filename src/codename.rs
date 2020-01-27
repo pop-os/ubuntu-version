@@ -55,7 +55,9 @@ impl Codename {
 }
 
 impl Display for Codename {
-    fn fmt(&self, fmt: &mut Formatter) -> fmt::Result { fmt.write_str(<&'static str>::from(*self)) }
+    fn fmt(&self, fmt: &mut Formatter) -> fmt::Result {
+        fmt.write_str(<&'static str>::from(*self))
+    }
 }
 
 impl FromStr for Codename {

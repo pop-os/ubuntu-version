@@ -32,6 +32,10 @@ impl From<Codename> for Version {
             Codename::Focal => (20, 4),
         };
 
-        Version { major, minor, patch: 0 }
+        Version {
+            major,
+            minor,
+            patch: 0,
+        }
     }
 }
