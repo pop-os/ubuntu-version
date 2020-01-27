@@ -23,7 +23,7 @@ impl Codename {
     /// The date when this release is to be, or was, EOL'd.
     pub fn eol_date(self) -> (u32, u32, u32) {
         let (y, m, d) = self.release_date();
-        
+
         if y % 2 == 0 && m == 4 {
             (y + 10, m, d)
         } else {
@@ -38,8 +38,7 @@ impl Codename {
             Codename::Cosmic => (2018, 10, 18),
             Codename::Disco => (2019, 4, 18),
             Codename::Eoan => (2019, 10, 17),
-            // Approximate time for future release
-            Codename::Focal => (2020, 4, 0),
+            Codename::Focal => (2020, 4, 23),
         }
     }
 
@@ -50,8 +49,7 @@ impl Codename {
             Codename::Cosmic => 1_539_820_800,
             Codename::Disco => 1_555_545_600,
             Codename::Eoan => 1_571_270_400,
-            // Approximate time for future release
-            Codename::Focal => 1_585_699_200,
+            Codename::Focal => 1_587_600_000,
         }
     }
 }

@@ -1,5 +1,5 @@
-use ubuntu_version::{Codename, Version};
 use std::convert::TryFrom;
+use ubuntu_version::{Codename, Version};
 
 fn main() {
     let _version = "18.04 LTS".parse::<Version>().unwrap();
