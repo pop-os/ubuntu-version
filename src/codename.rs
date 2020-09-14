@@ -17,6 +17,7 @@ pub enum Codename {
     Disco,
     Eoan,
     Focal,
+    Groovy,
 }
 
 impl Codename {
@@ -39,6 +40,7 @@ impl Codename {
             Codename::Disco => (2019, 4, 18),
             Codename::Eoan => (2019, 10, 17),
             Codename::Focal => (2020, 4, 23),
+            Codename::Groovy => (2020, 10, 22),
         }
     }
 
@@ -50,6 +52,7 @@ impl Codename {
             Codename::Disco => 1_555_545_600,
             Codename::Eoan => 1_571_270_400,
             Codename::Focal => 1_587_600_000,
+            Codename::Groovy => 1_603_324_800,
         }
     }
 }
@@ -70,6 +73,7 @@ impl FromStr for Codename {
             "disco" => Codename::Disco,
             "eoan" => Codename::Eoan,
             "focal" => Codename::Focal,
+            "groovy" => Codename::Groovy,
             _ => return Err(CodenameParseError::NotFound),
         };
 
@@ -85,6 +89,7 @@ impl From<Codename> for &'static str {
             Codename::Disco => "disco",
             Codename::Eoan => "eoan",
             Codename::Focal => "focal",
+            Codename::Groovy => "groovy",
         }
     }
 }
