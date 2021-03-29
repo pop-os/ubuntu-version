@@ -18,6 +18,7 @@ impl TryFrom<Version> for Codename {
             (19, 10) => Codename::Eoan,
             (20, 4) => Codename::Focal,
             (20, 10) => Codename::Groovy,
+            (21, 4) => Codename::Hirsute,
             _ => return Err(()),
         })
     }
@@ -32,6 +33,7 @@ impl From<Codename> for Version {
             Codename::Eoan => (19, 10),
             Codename::Focal => (20, 4),
             Codename::Groovy => (20, 10),
+            Codename::Hirsute => (21, 4),
         };
 
         Version {
