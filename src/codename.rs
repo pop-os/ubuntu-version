@@ -19,6 +19,7 @@ pub enum Codename {
     Focal,
     Groovy,
     Hirsute,
+    Impish,
 }
 
 impl Codename {
@@ -43,11 +44,13 @@ impl Codename {
             Codename::Focal => (2020, 4, 23),
             Codename::Groovy => (2020, 10, 22),
             Codename::Hirsute => (2021, 4, 22),
+            Codename::Impish => (2021, 10, 14),
         }
     }
 
     /// When this was released, as the time in seconds since the Unix Epoch
     pub fn release_timestamp(self) -> u64 {
+        // Create with `date "+%s" -d 10/14/2021`
         match self {
             Codename::Bionic => 1_524_700_800,
             Codename::Cosmic => 1_539_820_800,
@@ -56,6 +59,7 @@ impl Codename {
             Codename::Focal => 1_587_600_000,
             Codename::Groovy => 1_603_324_800,
             Codename::Hirsute => 1_619_071_200,
+            Codename::Impish => 1_634_191_200
         }
     }
 }
@@ -78,6 +82,7 @@ impl FromStr for Codename {
             "focal" => Codename::Focal,
             "groovy" => Codename::Groovy,
             "hirsute" => Codename::Hirsute,
+            "impish" => Codename::Impish,
             _ => return Err(CodenameParseError::NotFound),
         };
 
@@ -95,6 +100,7 @@ impl From<Codename> for &'static str {
             Codename::Focal => "focal",
             Codename::Groovy => "groovy",
             Codename::Hirsute => "hirsute",
+            Codename::Impish => "impish",
         }
     }
 }
