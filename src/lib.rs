@@ -20,6 +20,7 @@ impl TryFrom<Version> for Codename {
             (20, 10) => Codename::Groovy,
             (21, 4) => Codename::Hirsute,
             (21, 10) => Codename::Impish,
+            (22, 4) => Codename::Jammy,
             _ => return Err(()),
         })
     }
@@ -36,6 +37,7 @@ impl From<Codename> for Version {
             Codename::Groovy => (20, 10),
             Codename::Hirsute => (21, 4),
             Codename::Impish => (21, 10),
+            Codename::Jammy => (22, 4),
         };
 
         Version {

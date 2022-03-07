@@ -20,6 +20,7 @@ pub enum Codename {
     Groovy,
     Hirsute,
     Impish,
+    Jammy,
 }
 
 impl Codename {
@@ -45,6 +46,7 @@ impl Codename {
             Codename::Groovy => (2020, 10, 22),
             Codename::Hirsute => (2021, 4, 22),
             Codename::Impish => (2021, 10, 14),
+            Codename::Jammy => (2022, 4, 21),
         }
     }
 
@@ -59,7 +61,8 @@ impl Codename {
             Codename::Focal => 1_587_600_000,
             Codename::Groovy => 1_603_324_800,
             Codename::Hirsute => 1_619_071_200,
-            Codename::Impish => 1_634_191_200
+            Codename::Impish => 1_634_191_200,
+            Codename::Jammy => 1_650_492_000,
         }
     }
 }
@@ -83,6 +86,7 @@ impl FromStr for Codename {
             "groovy" => Codename::Groovy,
             "hirsute" => Codename::Hirsute,
             "impish" => Codename::Impish,
+            "jammy" => Codename::Jammy,
             _ => return Err(CodenameParseError::NotFound),
         };
 
@@ -101,6 +105,7 @@ impl From<Codename> for &'static str {
             Codename::Groovy => "groovy",
             Codename::Hirsute => "hirsute",
             Codename::Impish => "impish",
+            Codename::Jammy => "jammy",
         }
     }
 }
